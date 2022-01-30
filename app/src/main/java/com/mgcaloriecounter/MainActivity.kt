@@ -11,8 +11,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.mayurg.core.navigation.Route
+import com.mayurg.onboarding_presentation.activity.ActivityScreen
 import com.mayurg.onboarding_presentation.age.AgeScreen
 import com.mayurg.onboarding_presentation.gender.GenderScreen
+import com.mayurg.onboarding_presentation.goal.GoalScreen
 import com.mayurg.onboarding_presentation.height.HeightScreen
 import com.mayurg.onboarding_presentation.weight.WeightScreen
 import com.mayurg.onboarding_presentation.welcome.WelcomeScreen
@@ -63,6 +65,14 @@ class MainActivity : ComponentActivity() {
                                 scaffoldState = scaffoldState,
                                 onNavigate = navController::navigate
                             )
+                        }
+
+                        composable(Route.ACTIVITY) {
+                            ActivityScreen(onNavigate = navController::navigate)
+                        }
+
+                        composable(Route.GOAL){
+                            GoalScreen(onNavigate = navController::navigate)
                         }
                     }
                 }
