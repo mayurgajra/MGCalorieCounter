@@ -62,7 +62,7 @@ fun GenderScreen(
                         fontWeight = FontWeight.Normal
                     )
                 )
-                Spacer(modifier = Modifier.height(spacing.spaceMedium))
+                Spacer(modifier = Modifier.width(spacing.spaceMedium))
                 SelectableButton(
                     text = stringResource(id = R.string.female),
                     isSelected = viewModel.selectedGender is Gender.Female,

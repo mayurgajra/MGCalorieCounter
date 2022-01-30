@@ -62,7 +62,7 @@ fun ActivityScreen(
                         fontWeight = FontWeight.Normal
                     )
                 )
-                Spacer(modifier = Modifier.height(spacing.spaceMedium))
+                Spacer(modifier = Modifier.width(spacing.spaceMedium))
                 SelectableButton(
                     text = stringResource(id = R.string.medium),
                     isSelected = viewModel.selectedActivityLevel is ActivityLevel.Medium,
@@ -75,7 +75,7 @@ fun ActivityScreen(
                         fontWeight = FontWeight.Normal
                     )
                 )
-                Spacer(modifier = Modifier.height(spacing.spaceMedium))
+                Spacer(modifier = Modifier.width(spacing.spaceMedium))
                 SelectableButton(
                     text = stringResource(id = R.string.high),
                     isSelected = viewModel.selectedActivityLevel is ActivityLevel.High,

@@ -16,6 +16,7 @@ import com.mayurg.onboarding_presentation.age.AgeScreen
 import com.mayurg.onboarding_presentation.gender.GenderScreen
 import com.mayurg.onboarding_presentation.goal.GoalScreen
 import com.mayurg.onboarding_presentation.height.HeightScreen
+import com.mayurg.onboarding_presentation.nutrient_goal.NutrientGoalScreen
 import com.mayurg.onboarding_presentation.weight.WeightScreen
 import com.mayurg.onboarding_presentation.welcome.WelcomeScreen
 import com.mgcaloriecounter.navigation.navigate
@@ -71,8 +72,15 @@ class MainActivity : ComponentActivity() {
                             ActivityScreen(onNavigate = navController::navigate)
                         }
 
-                        composable(Route.GOAL){
+                        composable(Route.GOAL) {
                             GoalScreen(onNavigate = navController::navigate)
+                        }
+
+                        composable(Route.NUTRIENT_GOAL) {
+                            NutrientGoalScreen(
+                                scaffoldState = scaffoldState,
+                                onNavigate = navController::navigate
+                            )
                         }
                     }
                 }
