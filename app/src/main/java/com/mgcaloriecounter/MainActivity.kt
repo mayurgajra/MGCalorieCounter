@@ -13,6 +13,8 @@ import androidx.navigation.compose.rememberNavController
 import com.mayurg.core.navigation.Route
 import com.mayurg.onboarding_presentation.age.AgeScreen
 import com.mayurg.onboarding_presentation.gender.GenderScreen
+import com.mayurg.onboarding_presentation.height.HeightScreen
+import com.mayurg.onboarding_presentation.weight.WeightScreen
 import com.mayurg.onboarding_presentation.welcome.WelcomeScreen
 import com.mgcaloriecounter.navigation.navigate
 import com.mgcaloriecounter.ui.theme.MGCalorieCounterTheme
@@ -44,6 +46,20 @@ class MainActivity : ComponentActivity() {
 
                         composable(Route.AGE) {
                             AgeScreen(
+                                scaffoldState = scaffoldState,
+                                onNavigate = navController::navigate
+                            )
+                        }
+
+                        composable(Route.HEIGHT) {
+                            HeightScreen(
+                                scaffoldState = scaffoldState,
+                                onNavigate = navController::navigate
+                            )
+                        }
+
+                        composable(Route.WEIGHT) {
+                            WeightScreen(
                                 scaffoldState = scaffoldState,
                                 onNavigate = navController::navigate
                             )
