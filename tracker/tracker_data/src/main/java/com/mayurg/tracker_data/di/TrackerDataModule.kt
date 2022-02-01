@@ -1,5 +1,8 @@
 package com.mayurg.tracker_data.di
 
+import android.app.Application
+import androidx.room.Room
+import com.mayurg.tracker_data.local.TrackerDatabase
 import com.mayurg.tracker_data.remote.OpenFoodApi
 import dagger.Module
 import dagger.Provides
@@ -35,5 +38,15 @@ object TrackerDataModule {
             .client(client)
             .build()
             .create(OpenFoodApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun providesTrackerDatabase(app: Application): TrackerDatabase {
+        return Room.databaseBuilder(
+            app,
+            TrackerDatabase::class.java,
+            "tracker_db"
+        ).build()
     }
 }
