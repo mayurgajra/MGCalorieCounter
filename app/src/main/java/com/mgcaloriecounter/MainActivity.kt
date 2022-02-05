@@ -19,6 +19,7 @@ import com.mayurg.onboarding_presentation.height.HeightScreen
 import com.mayurg.onboarding_presentation.nutrient_goal.NutrientGoalScreen
 import com.mayurg.onboarding_presentation.weight.WeightScreen
 import com.mayurg.onboarding_presentation.welcome.WelcomeScreen
+import com.mayurg.tracker_presentation.tracker_overview.TrackerOverViewScreen
 import com.mgcaloriecounter.navigation.navigate
 import com.mgcaloriecounter.ui.theme.MGCalorieCounterTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -81,6 +82,10 @@ class MainActivity : ComponentActivity() {
                                 scaffoldState = scaffoldState,
                                 onNavigate = navController::navigate
                             )
+                        }
+
+                        composable(Route.TRACKER_OVERVIEW) {
+                            TrackerOverViewScreen(onNavigate = navController::navigate)
                         }
                     }
                 }

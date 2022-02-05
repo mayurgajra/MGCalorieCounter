@@ -1,4 +1,4 @@
-package com.mgcaloriecounter.ui.theme
+package com.mayurg.core_ui
 
 import androidx.compose.ui.graphics.Color
 
