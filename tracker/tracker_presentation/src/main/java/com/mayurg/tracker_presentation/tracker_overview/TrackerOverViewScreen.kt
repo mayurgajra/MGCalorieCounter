@@ -2,13 +2,16 @@ package com.mayurg.tracker_presentation.tracker_overview
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.mayurg.core.util.UiEvent
 import com.mayurg.core_ui.LocalSpacing
+import com.mayurg.tracker_presentation.tracker_overview.TrackerOverviewEvent.OnToggleMealClick
 import com.mayurg.tracker_presentation.tracker_overview.components.DaySelector
+import com.mayurg.tracker_presentation.tracker_overview.components.ExpandableMeal
 import com.mayurg.tracker_presentation.tracker_overview.components.NutrientsHeader
 
 @Composable
@@ -41,6 +44,15 @@ fun TrackerOverViewScreen(
                     .padding(horizontal = spacing.spaceMedium)
             )
             Spacer(modifier = Modifier.height(spacing.spaceMedium))
+        }
+
+        items(state.meals) { meal ->
+            ExpandableMeal(
+                meal = meal,
+                onToggleClick = { viewModel.onEvent(OnToggleMealClick(meal)) },
+                content = {  },
+                modifier = Modifier.fillMaxWidth()
+            )
         }
     }
 }
