@@ -89,51 +89,51 @@ fun TrackedFoodItem(
                 ),
                 style = MaterialTheme.typography.body1
             )
-            Spacer(modifier = Modifier.width(spacing.spaceMedium))
-            Column(
-                modifier = Modifier.fillMaxHeight(),
-                verticalArrangement = Arrangement.Center
+        }
+        Spacer(modifier = Modifier.width(spacing.spaceMedium))
+        Column(
+            modifier = Modifier.fillMaxHeight(),
+            verticalArrangement = Arrangement.Center
+        ) {
+            Icon(
+                imageVector = Icons.Default.Close,
+                contentDescription = stringResource(id = R.string.delete),
+                modifier = Modifier
+                    .align(Alignment.End)
+                    .clickable {
+                        onDeleteClick()
+                    }
+            )
+            Spacer(modifier = Modifier.height(spacing.spaceExtraSmall))
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
             ) {
-                Icon(
-                    imageVector = Icons.Default.Close,
-                    contentDescription = stringResource(id = R.string.delete),
-                    modifier = Modifier
-                        .align(Alignment.End)
-                        .clickable {
-                            onDeleteClick()
-                        }
+                NutrientInfo(
+                    name = stringResource(id = R.string.carbs),
+                    amount = trackedFood.carbs,
+                    unit = stringResource(id = R.string.grams),
+                    amountTextSize = 16.sp,
+                    unitTextSize = 12.sp,
+                    nameTextStyle = MaterialTheme.typography.body2
                 )
-                Spacer(modifier = Modifier.height(spacing.spaceExtraSmall))
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    NutrientInfo(
-                        name = stringResource(id = R.string.carbs),
-                        amount = trackedFood.carbs,
-                        unit = stringResource(id = R.string.grams),
-                        amountTextSize = 16.sp,
-                        unitTextSize = 12.sp,
-                        nameTextStyle = MaterialTheme.typography.body2
-                    )
-                    Spacer(modifier = Modifier.width(spacing.spaceExtraSmall))
-                    NutrientInfo(
-                        name = stringResource(id = R.string.protein),
-                        amount = trackedFood.protein,
-                        unit = stringResource(id = R.string.grams),
-                        amountTextSize = 16.sp,
-                        unitTextSize = 12.sp,
-                        nameTextStyle = MaterialTheme.typography.body2
-                    )
-                    Spacer(modifier = Modifier.width(spacing.spaceExtraSmall))
-                    NutrientInfo(
-                        name = stringResource(id = R.string.fat),
-                        amount = trackedFood.fat,
-                        unit = stringResource(id = R.string.grams),
-                        amountTextSize = 16.sp,
-                        unitTextSize = 12.sp,
-                        nameTextStyle = MaterialTheme.typography.body2
-                    )
-                }
+                Spacer(modifier = Modifier.width(spacing.spaceExtraSmall))
+                NutrientInfo(
+                    name = stringResource(id = R.string.protein),
+                    amount = trackedFood.protein,
+                    unit = stringResource(id = R.string.grams),
+                    amountTextSize = 16.sp,
+                    unitTextSize = 12.sp,
+                    nameTextStyle = MaterialTheme.typography.body2
+                )
+                Spacer(modifier = Modifier.width(spacing.spaceExtraSmall))
+                NutrientInfo(
+                    name = stringResource(id = R.string.fat),
+                    amount = trackedFood.fat,
+                    unit = stringResource(id = R.string.grams),
+                    amountTextSize = 16.sp,
+                    unitTextSize = 12.sp,
+                    nameTextStyle = MaterialTheme.typography.body2
+                )
             }
         }
     }

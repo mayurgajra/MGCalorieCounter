@@ -33,6 +33,7 @@ class TrackerOverviewViewModel @Inject constructor(
     private var getFoodsForDateJob: Job? = null
 
     init {
+        refreshFoods()
         preferences.saveShouldShowOnboarding(false)
     }
 
@@ -100,6 +101,7 @@ class TrackerOverviewViewModel @Inject constructor(
                     proteinGoal = nutrientsResult.proteinGoal,
                     fatGoal = nutrientsResult.fatGoal,
                     trackedFoods = foods,
+                    caloriesGoal = nutrientsResult.caloriesGoal,
                     meals = state.meals.map {
                         val nutrientsForMeal =
                             nutrientsResult.mealNutrients[it.mealType]
