@@ -15,7 +15,7 @@ import java.time.LocalDate
 class TrackerRepositoryImpl(
     private val dao: TrackerDao,
     private val api: OpenFoodApi
-) :  TrackerRepository {
+) : TrackerRepository {
     override suspend fun searchFood(
         query: String,
         page: Int,
@@ -27,8 +27,20 @@ class TrackerRepositoryImpl(
                 page = page,
                 pageSize = pageSize
             )
-            Result.success(searchDto.products.mapNotNull { it.toTrackableFood() })
-        } catch (e: Exception){
+            Result.success(searchDto.products
+                .filter {
+                    val calculatedCalories =
+                        it.nutriments.carbohydrates100g * 4f
+                    +it.nutriments.proteins100g * 4f
+                    +it.nutriments.fat100g * 9f
+
+                    val lowerBound = calculatedCalories * 0.99f
+                    val upperBound = calculatedCalories * 1.01f
+
+                    it.nutriments.energyKcal100g in (lowerBound..upperBound)
+                }
+                .mapNotNull { it.toTrackableFood() })
+        } catch (e: Exception) {
             e.printStackTrace()
             Result.failure(e)
         }
@@ -39,7 +51,7 @@ class TrackerRepositoryImpl(
     }
 
     override suspend fun deleteTrackedFood(food: TrackedFood) {
-       dao.deleteTrackedFood(food.toTrackedFoodEntity())
+        dao.deleteTrackedFood(food.toTrackedFoodEntity())
     }
 
     override fun getFoodsForDate(localDate: LocalDate): Flow<List<TrackedFood>> {

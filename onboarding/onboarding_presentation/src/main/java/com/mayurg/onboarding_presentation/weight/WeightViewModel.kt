@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mayurg.core.R
 import com.mayurg.core.domain.preferences.Preferences
-import com.mayurg.core.navigation.Route
 import com.mayurg.core.util.UiEvent
 import com.mayurg.core.util.UiText
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -45,7 +44,7 @@ class WeightViewModel @Inject constructor(
             }
 
             preferences.saveWeight(weightNumber)
-            _uiEvent.send(UiEvent.Navigate(Route.ACTIVITY))
+            _uiEvent.send(UiEvent.Success)
         }
     }
 

@@ -1,4 +1,4 @@
-package com.mayurg.core.navigation
+package com.mgcaloriecounter.navigation
 
 object Route {
     const val WELCOME = "welcome"
